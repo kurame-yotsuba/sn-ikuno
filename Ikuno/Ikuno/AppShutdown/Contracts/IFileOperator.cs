@@ -1,4 +1,4 @@
-﻿namespace SwallowNest.Ikuno.AppShutdown
+﻿namespace SwallowNest.Ikuno.AppShutdown.Contracts
 {
     public interface IFileOperator
     {

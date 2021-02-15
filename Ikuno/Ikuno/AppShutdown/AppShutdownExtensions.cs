@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SwallowNest.Ikuno.AppShutdown.Contracts;
 using System;
 using System.Xml.Schema;
 
@@ -34,12 +35,12 @@ namespace SwallowNest.Ikuno.AppShutdown
         /// <returns></returns>
         public static IServiceCollection AddAppShutdownService(
             this IServiceCollection services,
-            Func<bool> shutdownDiscriminator)
+            ShutdownPredicate shutdownPredicate)
         {
             services.AddHostedService(provider =>
             {
                 var (appLifetime, logger) = Get(provider);
-                return new AppShutdownService(shutdownDiscriminator, appLifetime, logger);
+                return new AppShutdownService(shutdownPredicate, appLifetime, logger);
             });
 
             return services;

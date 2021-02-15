@@ -1,15 +1,13 @@
-﻿using System.IO;
+﻿using SwallowNest.Ikuno.AppShutdown.Contracts;
+using System.IO;
 
 namespace SwallowNest.Ikuno.AppShutdown
 {
     internal class DefaultFileOperator : IFileOperator
     {
-        string _filePath;
+        private readonly string _filePath;
 
-        public DefaultFileOperator(string filePath)
-        {
-            _filePath = filePath;
-        }
+        public DefaultFileOperator(string filePath) => _filePath = filePath;
 
         public string FilePath => _filePath;
 

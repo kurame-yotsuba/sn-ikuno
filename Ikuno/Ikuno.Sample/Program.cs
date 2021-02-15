@@ -1,17 +1,20 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SwallowNest.Ikuno.AppShutdown;
-using System;
+using SwallowNest.Ikuno.AppShutdown.Contracts;
+using System.IO;
 
 namespace SwallowNest.Ikuno.Sample
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    services.AddAppShutdownService("hoge.txt");
+                    string runningFilePath = "app.running";
+                    services.AddAppShutdownService(runningFilePath);
                 })
                 .Build()
                 .Run();

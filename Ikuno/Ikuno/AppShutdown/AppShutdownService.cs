@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SwallowNest.Ikuno.AppShutdown.Contracts;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace SwallowNest.Ikuno.AppShutdown
         /// <summary>
         /// アプリケーションのシャットダウンの判断を行うデリゲート
         /// </summary>
-        protected readonly Func<bool> _shutdownDiscriminator;
+        protected readonly ShutdownPredicate _shutdownPredicate;
 
         protected readonly IHostApplicationLifetime _applicationLifetime;
         protected readonly ILogger<AppShutdownService> _logger;
@@ -22,11 +23,11 @@ namespace SwallowNest.Ikuno.AppShutdown
         private TimeSpan Interval { get; } = TimeSpan.FromSeconds(1);
 
         public AppShutdownService(
-            Func<bool> shutdownDiscriminator,
+            ShutdownPredicate shutdownPredicate,
             IHostApplicationLifetime applicationLifetime,
             ILogger<AppShutdownService> logger)
         {
-            _shutdownDiscriminator = shutdownDiscriminator;
+            _shutdownPredicate = shutdownPredicate;
             _applicationLifetime = applicationLifetime;
             _logger = logger;
         }
@@ -41,7 +42,7 @@ namespace SwallowNest.Ikuno.AppShutdown
         {
             while (stoppingToken.IsCancellationRequested is false)
             {
-                if (_shutdownDiscriminator())
+                if (_shutdownPredicate())
                 {
                     _logger.LogInformation("The shutdown condition is true.");
                     _applicationLifetime.StopApplication();
