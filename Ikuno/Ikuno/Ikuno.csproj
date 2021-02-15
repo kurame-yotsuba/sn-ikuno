@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>SwallowNest.Ikuno</AssemblyName>
+    <RootNamespace>SwallowNest.Ikuno</RootNamespace>
+    <Nullable>enable</Nullable>
+    <Authors>Kurame</Authors>
+    <Copyright>https://github.com/kurame-yotsuba/sn-ikuno/blob/main/LICENSE</Copyright>
+    <PackageProjectUrl>https://github.com/kurame-yotsuba/sn-ikuno</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/kurame-yotsuba/sn-ikuno</RepositoryUrl>
+    <Version>0.1.0</Version>
+
+  </PropertyGroup>
+
+</Project>
