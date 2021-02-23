@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SwallowNest.Ikuno
+﻿namespace SwallowNest.Ikuno
 {
-    static class Utility
+    internal static class Utility
     {
     }
-}
-
-namespace System.Runtime.CompilerServices
-{
-    static class IsExternalInit { }
 }
