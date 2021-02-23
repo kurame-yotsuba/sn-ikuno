@@ -6,7 +6,7 @@
     <AssemblyName>SwallowNest.Ikuno</AssemblyName>
     <RootNamespace>SwallowNest.Ikuno</RootNamespace>
     <Nullable>enable</Nullable>
-    <Authors>Kurame</Authors>
+    <Authors>kurame</Authors>
     <Copyright>https://github.com/kurame-yotsuba/sn-ikuno/blob/main/LICENSE</Copyright>
     <PackageProjectUrl>https://github.com/kurame-yotsuba/sn-ikuno</PackageProjectUrl>
     <RepositoryUrl>https://github.com/kurame-yotsuba/sn-ikuno</RepositoryUrl>
