@@ -13,16 +13,24 @@ namespace SwallowNest.Ikuno.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            var appLifetime = new Mock<IHostApplicationLifetime>().Object;
+            // IHostApplicationLifetimeのモック作成
+            var appMock = new Mock<IHostApplicationLifetime>();
+            appMock.Setup(x => x.StopApplication());
+
+            // コンストラクタに入れる用のインスタンス作成
+            var appLifetime = appMock.Object;
             var logger = new Mock<ILogger<AppShutdownService>>().Object;
 
             bool exit = false;
             var service = new AppShutdownService(() => exit, appLifetime, logger);
             var task = service.StartAsync(default);
-            exit = true;
 
-            Task.Delay(1000).Wait();
+            // exitをtrueにしてから1秒以内にサービスが終了する。
+            // ただし、StopApplicationが呼ばれるまでには1000秒強かかるっぽい？
+            exit = true;
+            Task.Delay(1200).Wait();
             task.IsCompletedSuccessfully.IsTrue();
+            appMock.Verify(x => x.StopApplication());
         }
     }
 }
