@@ -3,7 +3,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using SwallowNest.Ikuno.AppShutdown.Contracts;
 using System;
-using System.Xml.Schema;
 
 namespace SwallowNest.Ikuno.AppShutdown
 {
@@ -51,18 +50,34 @@ namespace SwallowNest.Ikuno.AppShutdown
         /// シャットダウン時に指定されたファイルが残っていた場合はそのファイルは削除される。
         /// </summary>
         /// <param name="services"></param>
-        /// <param name="filePath">アプリケーションが実行中であることを表すファイルのパス</param>
+        /// <param name="fileOperator">ファイルアクセス用のインスタンス</param>
         /// <returns></returns>
-        public static IServiceCollection AddAppShutdownService(this IServiceCollection services, string filePath)
+        public static IServiceCollection AddAppShutdownService(
+            this IServiceCollection services,
+            IFileOperator fileOperator)
         {
             services.AddHostedService(provider =>
             {
                 var (appLifetime, logger) = Get(provider);
-                var fileOperator = new DefaultFileOperator(filePath);
                 return new FileExistanceShutdownService(fileOperator, appLifetime, logger);
             });
 
             return services;
+        }
+
+        /// <summary>
+        /// 指定されたファイルが存在しなくなったときに、アプリケーションのシャットダウンを行うサービスを追加する。
+        /// シャットダウン時に指定されたファイルが残っていた場合はそのファイルは削除される。
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="filePath">アプリケーションが実行中であることを表すファイルのパス</param>
+        /// <returns></returns>
+        public static IServiceCollection AddAppShutdownService(
+            this IServiceCollection services,
+            string filePath)
+        {
+            IFileOperator fileOperator = new DefaultFileOperator(filePath);
+            return AddAppShutdownService(services, fileOperator);
         }
     }
 }
