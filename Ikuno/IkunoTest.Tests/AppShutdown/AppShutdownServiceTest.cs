@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Hosting;
+ï»¿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -7,30 +7,30 @@ using System.Threading.Tasks;
 
 namespace SwallowNest.Ikuno.Tests.AppShutdown
 {
-    [TestClass]
-    public class AppShutdownServiceTest
-    {
-        [TestMethod]
-        public void TestMethod1()
-        {
-            // IHostApplicationLifetime‚Ìƒ‚ƒbƒNì¬
-            var appMock = new Mock<IHostApplicationLifetime>();
-            appMock.Setup(x => x.StopApplication());
+	[TestClass]
+	public class AppShutdownServiceTest
+	{
+		[TestMethod]
+		public void TestMethod1()
+		{
+			// IHostApplicationLifetimeã®ãƒ¢ãƒƒã‚¯ä½œæˆ
+			var appMock = new Mock<IHostApplicationLifetime>();
+			appMock.Setup(x => x.StopApplication());
 
-            // ƒRƒ“ƒXƒgƒ‰ƒNƒ^‚É“ü‚ê‚é—p‚ÌƒCƒ“ƒXƒ^ƒ“ƒXì¬
-            var appLifetime = appMock.Object;
-            var logger = new Mock<ILogger<AppShutdownService>>().Object;
+			// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã«å…¥ã‚Œã‚‹ç”¨ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ä½œæˆ
+			var appLifetime = appMock.Object;
+			var logger = new Mock<ILogger<AppShutdownService>>().Object;
 
-            bool exit = false;
-            var service = new AppShutdownService(() => exit, appLifetime, logger);
-            var task = service.StartAsync(default);
+			bool exit = false;
+			var service = new AppShutdownService(() => exit, appLifetime, logger);
+			var task = service.StartAsync(default);
 
-            // exit‚ğtrue‚É‚µ‚Ä‚©‚ç1•bˆÈ“à‚ÉƒT[ƒrƒX‚ªI—¹‚·‚éB
-            // ‚½‚¾‚µAStopApplication‚ªŒÄ‚Î‚ê‚é‚Ü‚Å‚É‚Í1000•b‹­‚©‚©‚é‚Á‚Û‚¢H
-            exit = true;
-            Task.Delay(1200).Wait();
-            task.IsCompletedSuccessfully.IsTrue();
-            appMock.Verify(x => x.StopApplication());
-        }
-    }
+			// exitã‚’trueã«ã—ã¦ã‹ã‚‰1ç§’ä»¥å†…ã«ã‚µãƒ¼ãƒ“ã‚¹ãŒçµ‚äº†ã™ã‚‹ã€‚
+			// ãŸã ã—ã€StopApplicationãŒå‘¼ã°ã‚Œã‚‹ã¾ã§ã«ã¯1000ç§’å¼·ã‹ã‹ã‚‹ã£ã½ã„ï¼Ÿ
+			exit = true;
+			Task.Delay(1200).Wait();
+			task.IsCompletedSuccessfully.IsTrue();
+			appMock.Verify(x => x.StopApplication());
+		}
+	}
 }
