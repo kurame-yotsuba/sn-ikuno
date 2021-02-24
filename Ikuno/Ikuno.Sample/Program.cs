@@ -13,11 +13,16 @@ namespace SwallowNest.Ikuno.Sample
             Host.CreateDefaultBuilder()
                 .ConfigureServices((context, services) =>
                 {
-                    string runningFilePath = "app.running";
-                    services.AddAppShutdownService(runningFilePath);
+                    //ConfigureAppShutdown(context, services);
                 })
                 .Build()
                 .Run();
+        }
+
+        private static void ConfigureAppShutdown(HostBuilderContext context, IServiceCollection services)
+        {
+            string runningFilePath = "app.running";
+            services.AddAppShutdownService(runningFilePath);
         }
     }
 }

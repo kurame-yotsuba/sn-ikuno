@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31004.235
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikuno", "Ikuno\Ikuno.csproj", "{762B6693-53FE-4860-AE16-0F56024E3263}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ikuno", "Ikuno\Ikuno.csproj", "{762B6693-53FE-4860-AE16-0F56024E3263}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IkunoTest.Tests", "IkunoTest.Tests\IkunoTest.Tests.csproj", "{4BC876D4-1675-440F-84E2-E1EAD07B3BAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IkunoTest.Tests", "IkunoTest.Tests\IkunoTest.Tests.csproj", "{4BC876D4-1675-440F-84E2-E1EAD07B3BAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikuno.Sample", "Ikuno.Sample\Ikuno.Sample.csproj", "{A62F898C-CF49-40C6-B47C-6026E8F26355}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ikuno.Sample", "Ikuno.Sample\Ikuno.Sample.csproj", "{A62F898C-CF49-40C6-B47C-6026E8F26355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ikuno.TweetBot", "Ikuno.TweetBot\Ikuno.TweetBot.csproj", "{3925D64B-F2A4-4A34-B78D-8C750A10DCF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{A62F898C-CF49-40C6-B47C-6026E8F26355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A62F898C-CF49-40C6-B47C-6026E8F26355}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A62F898C-CF49-40C6-B47C-6026E8F26355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3925D64B-F2A4-4A34-B78D-8C750A10DCF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3925D64B-F2A4-4A34-B78D-8C750A10DCF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3925D64B-F2A4-4A34-B78D-8C750A10DCF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3925D64B-F2A4-4A34-B78D-8C750A10DCF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
