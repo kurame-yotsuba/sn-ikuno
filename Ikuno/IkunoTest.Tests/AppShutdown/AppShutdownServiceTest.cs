@@ -5,7 +5,7 @@ using Moq;
 using SwallowNest.Ikuno.AppShutdown;
 using System.Threading.Tasks;
 
-namespace SwallowNest.Ikuno.Tests
+namespace SwallowNest.Ikuno.Tests.AppShutdown
 {
     [TestClass]
     public class AppShutdownServiceTest
