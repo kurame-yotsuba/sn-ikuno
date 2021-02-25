@@ -12,7 +12,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Ikuno.TweetBot\Ikuno.TweetBot.csproj" />
     <ProjectReference Include="..\Ikuno\Ikuno.csproj" />
   </ItemGroup>
 
